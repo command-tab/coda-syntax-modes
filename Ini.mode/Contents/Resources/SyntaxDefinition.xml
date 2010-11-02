@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE syntax SYSTEM "syntax.dtd">
+<syntax>
+	<head>
+		<name>INI</name>
+		<charsintokens><![CDATA[_0987654321abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@]]></charsintokens>
+	</head>
+	<states>
+		<default id="Base" color="#000000" background-color="#ffffff" font-weight="normal" font-style="normal">
+			<keywords id="Numbers" color="#00f" useforautocomplete="no">
+				<regex>(?&lt;=[^\w\d]|^)(((([0-9]+\.[0-9]*)|(\.[0-9]+))([eE][+\-]?[0-9]+)?[fFlL]?)|((([1-9][0-9]*)|0[0-7]*|(0[xX][0-9a-fA-F]+))(([uU][lL]?)|([lL][uU]?))?))(?=[^\w\d]|$)</regex>
+			</keywords>
+			<state id="Comment" type="comment" color="#236E25" font-weight="normal" font-style="normal">
+				<begin><regex>;</regex></begin>
+				<end><regex>[\n\r]|(?:.*(?=&lt;/\s*script\s*&gt;))</regex></end>
+			</state>
+			<state id="Section" type="string" color="#0000ff" font-weight="normal" font-style="normal" usespellchecking="yes">
+				<begin><regex>\[</regex></begin>
+				<end><regex>\]</regex></end>
+			</state>
+			<state id="String" type="string" color="#760f15" font-weight="normal" font-style="normal" usespellchecking="yes">
+				<begin><regex>"</regex></begin>
+				<end><regex>(((?&lt;!\\)(\\\\)*)|^)"</regex></end>
+			</state>
+			<state id="SingleString" type="string" color="#760f15" font-weight="normal" font-style="normal" usespellchecking="yes">
+				<begin><regex>'</regex></begin>
+				<end><regex>(((?&lt;!\\)(\\\\)*)|^)'</regex></end>
+			</state>
+		</default>
+	</states>
+</syntax>
+<!-- http://www.codingmonkeys.de/subethaedit/mode.html -->
